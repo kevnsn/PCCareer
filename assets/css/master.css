@@ -8,16 +8,9 @@ text-shadow: none !important;
 -webkit-border-bottom-right-radius:0!important;
 -webkit-border-top-right-radius:0!important;
 }
-
-
-
-
 body {
   background: #fff;
-  background: -webkit-gradient(linear, 100% 0%, 0% 0%, from(#C8C8C8), color-stop(0.47, white), to(#C8C8C8));
   margin: 0;
-  /*font: 18px Helvetica;*/
-  /*text-align: left;*/
 }
 .ui-content {
 	padding:8px 15px 15px 15px;
@@ -165,7 +158,7 @@ h4 {
 {
 	margin-top:15px;
 	float:left;
-	display:none;
+	/*display:none;*/
 	width:100%;
 }
 
