@@ -32,6 +32,7 @@
  var locationstring;
  var pages; // stores total number of pages
  var currpage; // stores current page
+ var test;
  
 var app = {
     // Application Constructor
@@ -102,9 +103,20 @@ var app = {
 					console.log("radio1") // show all jobs;
 				}					
 			});
+			
+			//bind back button
+		$("#backbutton").bind("click", function(e){$("#jobcontainer").hide();
+				$("#resultcontainer").show();
+				e.preventDefault();
+				});
 
-    		};
-
+		document.addEventListener("backbutton", onBackKeyDown, false);
+    		}
+			
+function onBackKeyDown() {
+			$("#jobcontainer").hide();
+			$("#resultcontainer").show();
+		}
 checkSubmit = function() 
 {
 	
@@ -202,7 +214,7 @@ updateSearch = function(urlstring,pagenumber) {
 			{
 				locationtext=" ("+dataarray[i].city +", " +dataarray[i].state+")";
 			}
-			data+='<li date="'+dataarray[i].postdate+'"><a href="'+dataarray[i].link+'"><h3>'+dataarray[i].jobtitle+'</h3><h4>'+dataarray[i].organization+locationtext+'</h4></a></li>';
+			data+='<li  date="'+dataarray[i].postdate+'"><a class="joblink" href="'+dataarray[i].link+'"><h3>'+dataarray[i].jobtitle+'</h3><h4>'+dataarray[i].organization+locationtext+'</h4></a></li>';
 		}
 		data+='</ul>';
 		console.log(data);
@@ -216,11 +228,32 @@ updateSearch = function(urlstring,pagenumber) {
 		    }
 		}).listview('refresh');
 		$.mobile.hidePageLoadingMsg();
+		$("#jobcontainer").hide();
+		$("#resultcontainer").show();
+		
+		//bind list links
+		$(".joblink").bind("click", function(e){$.mobile.showPageLoadingMsg();changePage(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
 		}
 });
-
 };
-//Used for debugging.
+//Create content for a search result
+changePage = function(joburl) {
+	//$("#jobtext").load(joburl+" div#main");
+	$.mobile.showPageLoadingMsg();
+	$.ajax({
+    url: joburl,
+    type: 'GET',
+    success: function(res) {
+	 datastring = $(res.responseText).find('div#main');
+	$("#jobtext").html(datastring);
+	$("#jobcontainer").show();
+	$("#resultcontainer").hide();
+	$.mobile.hidePageLoadingMsg();
+	}
+	});
+}
+
+
 
 $( "#PCCPage" ).on( "pageinit", function( event ) {
 	

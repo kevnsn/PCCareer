@@ -140,7 +140,13 @@ h4 {
 }
 
 /* bottom container styling */
-
+[data-role="footer"]  {
+	/*padding-top: 10px;*/
+	height: 80px;
+	background: none !important;
+	border: none !important;
+}
+	
 #prevbutton 
 {
 	margin-top:15px;
@@ -167,10 +173,24 @@ h4 {
 }
 #pagelabel
 {
+	color:#333;
 	margin-top:25px;
 	/*margin-left:50px;
 	
 	width:60px;*/
 	display:inline-block;
 	font-sie:12px;
+}
+
+/* styling for Job description */
+#backbutton {
+	width:120px
+}
+
+#jobtext {
+	padding:5px;	
+}
+
+#jobtext h1 {
+	color:#333;
 }
