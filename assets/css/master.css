@@ -1,0 +1,147 @@
+/* PhoneGap Optimization */
+*{
+text-shadow: none !important;
+-webkit-box-shadow: none !important;
+-webkit-border-radius:0!important;
+-webkit-border-top-left-radius:0!important;
+-webkit-border-bottom-left-radius:0!important;
+-webkit-border-bottom-right-radius:0!important;
+-webkit-border-top-right-radius:0!important;
+}
+
+
+
+
+body {
+  background: #fff;
+  background: -webkit-gradient(linear, 100% 0%, 0% 0%, from(#C8C8C8), color-stop(0.47, white), to(#C8C8C8));
+  margin: 0;
+  /*font: 18px Helvetica;*/
+  /*text-align: left;*/
+}
+.ui-content {
+	padding:8px 15px 15px 15px;
+}
+.view {
+	padding:15px;
+}
+/* HEADER */
+[data-role="header"] {
+	text-align:left;
+	padding-left:10px;
+}
+
+#titleimg {
+	display:inline-block;
+	margin-left:10px;
+  padding: 8px 0px 0px 0px;
+  margin-bottom:4px;
+}
+
+#titletext{
+	width:180px;
+	display:inline-block;	
+	text-align:left;
+}
+
+.titleholder {
+font-size:1em;
+color:#eeeeee;
+position:relative;
+bottom:6px;
+}
+h1 {
+	margin: 0px 0px 0px 0px;
+	display: inline-block;
+	position:relative;
+	bottom:6px;
+	color:#ffffff;
+	font-size:1.5em;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;}
+
+h2 {
+	font-size:16px;
+	margin-top:8px;
+	margin-bottom:2px;
+}
+#pclogo{
+	height:57px;
+	width:57px;
+	margin-right:8px;
+}
+
+
+.bottomindent{margin-top:2px;margin-bottom:5px;}
+p, #infolist { margin:.5em 0;
+font-size:12px;}
+
+.ui-btn-inner {
+overflow: visible !important;
+white-space: normal !important;
+}
+
+
+/*     FAQ     */
+#faq {
+margin-top:17px;	
+}
+
+.container {
+	padding:15px;
+	text-align:left;
+}
+
+#faqtitle {
+color:#000000;	
+}
+.faqtitletext {
+	text-shadow: 0 1px 0 rgb(209, 185, 185);
+	}
+li {font-size:12px;}
+
+/*      FORM ELEMENTS     */
+label {
+	display:block !important;
+	margin-top:4px !important;
+display:block !important;
+font-size:13.5px !important;	
+}
+
+#searchlabel {
+	margin-top:1.25em !important;
+}
+
+.ui-field-contain .ui-controlgroup, .ui-field-contain fieldset.ui-controlgroup {
+	margin-top:10px !important;
+}
+
+.checklist .ui-input-text.ui-shadow-inset.ui-corner-all.ui-btn-shadow.ui-body-c {margin-left:40px !important;}
+	
+legend {
+		margin-top:5px !important;
+display:block !important;
+font-size:13.5px !important;	
+}
+
+/* Search Result Formatting   */
+#resulttable {
+	margin-top:2em;
+}
+.ui-li.ui-li-divider.ui-bar-b {
+	padding:.3em 15px;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li
+{
+	padding:.2em 15px !important;
+}
+
+h3 { 
+margin:.4em 0px 0px 0px !important;
+font-size:15px !important;
+}
+
+h4 {
+	margin-top:0px 0px 0px .4em !important;
+	font-size:13px !important;
+}
