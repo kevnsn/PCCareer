@@ -51,10 +51,10 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-		 document.addEventListener("backbutton", function () {
-                function() {$("#jobcontainer").hide();
+		 document.addEventListener("backbutton", function() {
+			 $("#jobcontainer").hide();
 			$("#resultcontainer").show();}
-            }, true);
+            , true);
 			
 		//navigator.splashscreen.hide(); 
         //app.change('requestbutton');
