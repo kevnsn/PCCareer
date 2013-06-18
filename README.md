@@ -1,6 +1,6 @@
-Peace Corps Office of Victim Advocacy Portal
+Peace Corps RPCV Career Link
 ---
 
-A portal for the Peace Corps Office of Victim Advocacy (OVA).
+A portal for the Peace Corps RPCV Career Link
 
-The application uses jQuery, jQuery Icon Pack, and PhoneGap.
+The application uses jQuery, a cross domain mod for jQuery, the jQuery Icon Pack, and PhoneGap.

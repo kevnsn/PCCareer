@@ -138,10 +138,46 @@ font-size:13.5px !important;
 
 h3 { 
 margin:.4em 0px 0px 0px !important;
-font-size:15px !important;
+font-size:14px !important;
 }
 
 h4 {
 	margin-top:0px 0px 0px .4em !important;
-	font-size:13px !important;
+	font-size:11px !important;
+}
+
+/* bottom container styling */
+
+#prevbutton 
+{
+	margin-top:15px;
+	width:95px;
+	float:left;
+	display:inline-block;
+}
+#nextbutton {
+	margin-top:15px;
+	width:95px;
+	float:right;
+	display:inline-block;
+}
+#bottomcontainer
+{
+	margin-top:15px;
+	float:left;
+	display:none;
+	width:100%;
+}
+
+#bottomtable {
+	text-align:center;
+}
+#pagelabel
+{
+	margin-top:25px;
+	/*margin-left:50px;
+	
+	width:60px;*/
+	display:inline-block;
+	font-sie:12px;
 }

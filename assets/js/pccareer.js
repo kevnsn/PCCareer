@@ -30,6 +30,8 @@
  var dataarray; // contains returned search results
  var searchstring;
  var locationstring;
+ var pages; // stores total number of pages
+ var currpage; // stores current page
  
 var app = {
     // Application Constructor
@@ -65,6 +67,15 @@ var app = {
 		  checkSubmit();
 		  });
 		
+		$("#nextbutton").click(function() {
+		  $.mobile.showPageLoadingMsg();
+		 updateSearch(searchstring,currpage+1);
+		  });
+		  
+		$("#prevbutton").click(function() {
+		  $.mobile.showPageLoadingMsg();
+		  updateSearch(searchstring,currpage-1);
+		  });
 		//Add listener for location field
 		$("#radio-choice-1,#radio-choice-2,#radio-choice-3").change(function () {
 				console.log("radio button activated"); 
@@ -129,15 +140,14 @@ checkSubmit = function()
 	 searchstring = "http://www.peacecorps.gov/resources/returned/careerlink/jobs/"+locationstring+country+state+classif+tagstring+ncecheck+advcheck+keyword;
 	
 	//console.log(searchstring);
-	updateSearch(searchstring)
+	updateSearch(searchstring,1)
 };
 
-updateSearch = function(urlstring) {
-	
+updateSearch = function(urlstring,pagenumber) {
 	console.log("spinner deployed");
 	//$.mobile.showPageLoadingMsg();
 	$.ajax({
-    url: urlstring,
+    url: urlstring+"&page="+pagenumber,
     type: 'GET',
     success: function(res) {
        // var headline = $(res.responseText).find('a.tsh').text();
@@ -145,7 +155,25 @@ updateSearch = function(urlstring) {
 	   datastring = $(res.responseText).find('div#main');
         //console.log(res.responseText);
 		console.log(datastring.find('span.step-links'));
+		//dispaly total results  / pages strings
 		$("#note").text(datastring.find('p.note').text());
+		
+		//get total number of pages
+		pages = Math.ceil((parseInt(datastring.find('p.note strong').text().split(' ')[0],10)/10));
+		
+		//get current page number
+		currpage = parseInt(datastring.find('span.step-links span.current').text().split(' ')[1],10);
+		
+		//adjust buttons accordingly:
+		  $('#nextbutton').removeClass('ui-disabled');
+		  $('#prevbutton').removeClass('ui-disabled');
+		if(currpage==pages)
+		{$('#nextbutton').addClass('ui-disabled');}
+		if(currpage==1)
+		{$('#prevbutton').addClass('ui-disabled');}
+		
+		$("#pagelabel").text("Page "+currpage + " of " + pages);
+		$("#bottomcontainer").show()
 		$("#datatable").html(datastring.find('#resultTable'));
 		dataarray = $('#datatable tr:has(td)').map(function(i, v) {
 			var $td =  $('td', this);
@@ -162,7 +190,7 @@ updateSearch = function(urlstring) {
 					   }
 		}).get();
 		
-		var data='<ul data-role="listview"  data-autodividers="true" data-filter="false" id="reslist">';
+		var data='<ul data-role="listview"  data-autodividers="true" data-filter="false" id="reslist" >';
 		var length = dataarray.length;
 		var locationtext;
 		for (var i = 0; i < length; i++) {
@@ -209,6 +237,7 @@ $( "#PCCPage" ).on( "pageinit", function( event ) {
 	
 	addForm(); // Add listeners and functionality
 	
-	updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=");
+	updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
+	searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
 	//navigator.splashscreen.hide();
 });
