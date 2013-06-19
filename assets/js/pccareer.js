@@ -53,14 +53,24 @@ var app = {
     onDeviceReady: function() {
 		 document.addEventListener("backbutton", function() {
 			 $("#jobcontainer").hide();
-			$("#resultcontainer").show();}
-            , true);
-			
-		//navigator.splashscreen.hide(); 
+			$("#resultcontainer").show();}, true);
+		navigator.splashscreen.hide(); 
         //app.change('requestbutton');
 		/*$("#requestbutton").addClass('ui-disabled');
 		$("#requestbutton").attr('href',mailstring); 
 		addForm();*/
+		if(window.innerWidth<385)
+		{
+			console.log("narrow window detected");
+			$("label[for='radio-choice-3'] span.ui-btn-text").text("Intl.");
+		}
+		//Hide state and country input fields
+		$("#countrydiv").hide();
+		$("#statediv").hide();	
+		addForm(); // Add listeners and functionality
+		//Start a seach
+		updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
+		searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
     }
 };
 
@@ -69,17 +79,17 @@ var app = {
 	 
 	 //Add button listener
 	 $("#requestbutton").click(function() {
-		  $.mobile.showPageLoadingMsg();
+		  $("body").addClass("loading");
 		  checkSubmit();
 		  });
 		
 		$("#nextbutton").click(function() {
-		  $.mobile.showPageLoadingMsg();
+		  $("body").addClass("loading");
 		 updateSearch(searchstring,currpage+1);
 		  });
 		  
 		$("#prevbutton").click(function() {
-		  $.mobile.showPageLoadingMsg();
+		  $("body").addClass("loading");
 		  updateSearch(searchstring,currpage-1);
 		  });
 		//Add listener for location field
@@ -162,7 +172,7 @@ checkSubmit = function()
 
 updateSearch = function(urlstring,pagenumber) {
 	console.log("spinner deployed");
-	//$.mobile.showPageLoadingMsg();
+	$("body").addClass("loading");
 	$.ajax({
     url: urlstring+"&page="+pagenumber,
     type: 'GET',
@@ -179,7 +189,7 @@ updateSearch = function(urlstring,pagenumber) {
 		pages = Math.ceil((parseInt(datastring.find('p.note strong').text().split(' ')[0],10)/10));
 		
 		//get current page number
-		currpage = parseInt(datastring.find('span.step-links span.current').text().split(' ')[1],10);
+		currpage = (datastring.find('span.step-links span.current').length==0) ? 1:parseInt(datastring.find('span.step-links span.current').text().split(' ')[1],10);
 		
 		//adjust buttons accordingly:
 		  $('#nextbutton').removeClass('ui-disabled');
@@ -225,26 +235,27 @@ updateSearch = function(urlstring,pagenumber) {
 		console.log(data);
 		$("#resulttable").html(data);
     	//$("#pagelabel").html(datastring.find('span.step-links').html());
-		$("#reslist").listview({
+		/*$("#reslist").listview({
 		    autodividers: true,
 		    autodividersSelector: function (li) {
 		        var out = li.attr('date');
 		        return out;
 		    }
-		}).listview('refresh');
-		$.mobile.hidePageLoadingMsg();
+		}).listview('refresh');*/
+		$("body").removeClass("loading");
+		//$.mobile.hidePageLoadingMsg();
 		$("#jobcontainer").hide();
 		$("#resultcontainer").show();
 		
 		//bind list links
-		$(".joblink").bind("click", function(e){$.mobile.showPageLoadingMsg();changePage(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
+		$(".joblink").bind("click", function(e){$("body").addClass("loading");changePage(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
 		}
 });
 };
 //Create content for a search result
 changePage = function(joburl) {
 	//$("#jobtext").load(joburl+" div#main");
-	$.mobile.showPageLoadingMsg();
+	$("body").addClass("loading");
 	$.ajax({
     url: joburl,
     type: 'GET',
@@ -253,29 +264,22 @@ changePage = function(joburl) {
 	$("#jobtext").html(datastring);
 	$("#jobcontainer").show();
 	$("#resultcontainer").hide();
-	$.mobile.hidePageLoadingMsg();
+	$("body").removeClass("loading");
 	}
 	});
 }
 
 
 
-$( "#PCCPage" ).on( "pageinit", function( event ) {
-	
-	//Change strings if the window is too narrow:
-	if(window.innerWidth<385)
-	{
-		console.log("narrow window detected");
-		$("label[for='radio-choice-3'] span.ui-btn-text").text("Intl.");
-	}
-	
-	//Hide state and country input fields
-	$("#countrydiv").hide();
-	$("#statediv").hide();	
-	
-	addForm(); // Add listeners and functionality
-	
-	updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
-	searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
-	//navigator.splashscreen.hide();
+$(document).ready(function() {
+	/*
+      alert("document ready occurred!");
+	  //Hide state and country input fields
+		$("#countrydiv").hide();
+		$("#statediv").hide();	
+		addForm(); // Add listeners and functionality
+		//Start a seach
+		updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
+		searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
+		*/
 });
