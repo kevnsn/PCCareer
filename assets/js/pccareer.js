@@ -204,8 +204,7 @@ updateSearch = function(urlstring,pagenumber) {
 		$("#datatable").html(datastring.find('#resultTable'));
 		dataarray = $('#datatable tr:has(td)').map(function(i, v) {
 			var $td =  $('td', this);
-				return {
-						 id: ++i,
+				return {id: ++i,
 						 postdate: $td.eq(0).text().trim(),
 						 deadline: $td.eq(1).text().trim(),
 						 link: "http://www.peacecorps.gov/"+$td.eq(2).html().substring(10, $td.eq(2).html().indexOf('>')),          
@@ -213,8 +212,8 @@ updateSearch = function(urlstring,pagenumber) {
 						 organization:$td.eq(3).text().trim(),
 						 city:$td.eq(4).text().trim(),
 						 state:$td.eq(5).text().trim(),
-						 country:$td.eq(6).text().trim(),
-					   }
+						 country:$td.eq(6).text().trim()
+				}
 		}).get();
 		
 		var data='<ul data-role="listview"  data-autodividers="true" data-filter="false" id="reslist" >';
@@ -235,13 +234,13 @@ updateSearch = function(urlstring,pagenumber) {
 		console.log(data);
 		$("#resulttable").html(data);
     	//$("#pagelabel").html(datastring.find('span.step-links').html());
-		/*$("#reslist").listview({
+		$("#reslist").listview({
 		    autodividers: true,
 		    autodividersSelector: function (li) {
 		        var out = li.attr('date');
 		        return out;
 		    }
-		}).listview('refresh');*/
+		}).listview('refresh');
 		$("body").removeClass("loading");
 		//$.mobile.hidePageLoadingMsg();
 		$("#jobcontainer").hide();
@@ -269,11 +268,8 @@ changePage = function(joburl) {
 	});
 }
 
-
-
-$(document).ready(function() {
-	
-      alert("document ready occurred!");
+$(document).on('pageinit', function(){
+      //alert("document ready occurred!");
 	  //Hide state and country input fields
 		$("#countrydiv").hide();
 		$("#statediv").hide();	

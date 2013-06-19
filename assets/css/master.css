@@ -1,4 +1,10 @@
 /* PhoneGap Optimization */
+*{
+	text-shadow: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+	-webkit-transform: translate3d(0,0,0);
+}
 
 body {
   background: #fff;
@@ -186,7 +192,9 @@ h4 {
 }
 
 #jobtext {
-	padding:5px;	
+	padding:13px;	
+	margin-top:6px;
+	background:#fafafa;
 }
 
 #jobtext h1 {

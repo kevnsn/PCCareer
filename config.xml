@@ -34,6 +34,8 @@
 	<preference name="stay-in-webview" value="false" />
 	<preference name="phonegap-version" value="2.7.0" />
 	<preference name="orientation" value="portrait" />
-	<!--<preference name="auto-hide-splash-screen" value="false" />-->
+	<preference name="auto-hide-splash-screen" value="false" />
 	 <!--<preference name="splash-screen-duration" value="8000" />-->
+	 <access origin="http://127.0.0.1*" />
+	 
 </widget>
