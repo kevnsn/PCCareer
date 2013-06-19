@@ -55,10 +55,7 @@ var app = {
 		$("#jobcontainer").hide();
 		$("#resultcontainer").show();}, true);
 		navigator.splashscreen.hide(); 
-        //app.change('requestbutton');
-		/*$("#requestbutton").addClass('ui-disabled');
-		$("#requestbutton").attr('href',mailstring); 
-		addForm();*/
+        
 		if(window.innerWidth<385)
 		{
 			console.log("narrow window detected");
