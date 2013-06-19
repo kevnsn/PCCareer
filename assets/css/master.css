@@ -1,13 +1,5 @@
 /* PhoneGap Optimization */
-*{
-text-shadow: none !important;
--webkit-box-shadow: none !important;
--webkit-border-radius:0!important;
--webkit-border-top-left-radius:0!important;
--webkit-border-bottom-left-radius:0!important;
--webkit-border-bottom-right-radius:0!important;
--webkit-border-top-right-radius:0!important;
-}
+
 body {
   background: #fff;
   margin: 0;
