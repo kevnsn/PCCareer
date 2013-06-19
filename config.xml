@@ -36,6 +36,6 @@
 	<preference name="orientation" value="portrait" />
 	<preference name="auto-hide-splash-screen" value="false" />
 	 <!--<preference name="splash-screen-duration" value="8000" />-->
-	 <access origin="http://peacecorps.gov" browserOnly="true" />
+	 <access origin="http://www.peacecorps.gov" browserOnly="true" />
 	 
 </widget>
