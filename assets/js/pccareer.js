@@ -58,7 +58,7 @@ var app = {
         //app.change('requestbutton');
 		/*$("#requestbutton").addClass('ui-disabled');
 		$("#requestbutton").attr('href',mailstring); 
-		addForm();*/
+		addForm();
 		if(window.innerWidth<385)
 		{
 			console.log("narrow window detected");
@@ -70,7 +70,7 @@ var app = {
 		addForm(); // Add listeners and functionality
 		//Start a seach
 		updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
-		searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
+		searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";*/
     }
 };
 
@@ -272,7 +272,7 @@ changePage = function(joburl) {
 
 
 $(document).ready(function() {
-	/*
+	
       alert("document ready occurred!");
 	  //Hide state and country input fields
 		$("#countrydiv").hide();
@@ -281,5 +281,5 @@ $(document).ready(function() {
 		//Start a seach
 		updateSearch("http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=",1);
 		searchstring="http://www.peacecorps.gov/resources/returned/careerlink/jobs/?location_macro=&classification=&keyword_search=";
-		*/
+		
 });
