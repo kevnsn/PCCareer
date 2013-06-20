@@ -262,7 +262,7 @@ changePage = function(joburl) {
     success: function(res) {
 	 datastring = $(res.responseText).find('div#main');
 	$("#jobtext").html(datastring);
-	$("#jobtext a").bind("click", function(e){$("body").addClass("loading");loadURL(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
+	$("#jobtext a").bind("click", function(e){loadURL(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
 	$("#jobcontainer").show();
 	$("#resultcontainer").hide();
 	$("body").removeClass("loading");
