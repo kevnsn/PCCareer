@@ -54,7 +54,6 @@ var app = {
 		document.addEventListener("backbutton", function() {
 		$("#jobcontainer").hide();
 		$("#resultcontainer").show();}, true);
-		
 		navigator.splashscreen.hide(); 
         //app.change('requestbutton');
 		/*$("#requestbutton").addClass('ui-disabled');
@@ -76,8 +75,7 @@ var app = {
 };
 
  function addForm() {
-	 console.log("Form listeners started");
-	 
+	 //console.log("Form listeners started");
 	 //Add button listener
 	 $("#requestbutton").click(function() {
 		  $("body").addClass("loading");
@@ -95,10 +93,10 @@ var app = {
 		  });
 		//Add listener for location field
 		$("#radio-choice-1,#radio-choice-2,#radio-choice-3").change(function () {
-				console.log("radio button activated"); 
+				//console.log("radio button activated"); 
 				if ($("#radio-choice-2").prop('checked'))
 				{
-					console.log("radio2"); // Domestic filter selected, show state filter
+					//console.log("radio2"); // Domestic filter selected, show state filter
 					$("#countrydiv").hide();
 					$('#id_country').val("")
 					$('#id_country').selectmenu('refresh');
@@ -106,7 +104,7 @@ var app = {
 					}
 				else if ($("#radio-choice-3").prop('checked'))
 				{
-					console.log("radio3"); // International selected, show country filter
+					//console.log("radio3"); // International selected, show country filter
 					$("#statediv").hide();
 					$('#id_state').val("");
 					$('#id_state').selectmenu('refresh');
@@ -116,7 +114,7 @@ var app = {
 				{
 					$("#countrydiv").hide();
 					$("#statediv").hide();		
-					console.log("radio1") // show all jobs;
+					//console.log("radio1") // show all jobs;
 				}					
 			});
 			
@@ -172,7 +170,7 @@ checkSubmit = function()
 };
 
 updateSearch = function(urlstring,pagenumber) {
-	console.log("spinner deployed");
+	//console.log("spinner deployed");
 	$("body").addClass("loading");
 	$.ajax({
     url: urlstring+"&page="+pagenumber,
@@ -182,7 +180,7 @@ updateSearch = function(urlstring,pagenumber) {
 	   
 	   datastring = $(res.responseText).find('div#main');
         //console.log(res.responseText);
-		console.log(datastring.find('span.step-links'));
+		//console.log(datastring.find('span.step-links'));
 		//dispaly total results  / pages strings
 		$("#note").text(datastring.find('p.note').text());
 		
@@ -232,7 +230,7 @@ updateSearch = function(urlstring,pagenumber) {
 			data+='<li  date="'+dataarray[i].postdate+'"><a class="joblink" href="'+dataarray[i].link+'"><h3>'+dataarray[i].jobtitle+'</h3><h4>'+dataarray[i].organization+locationtext+'</h4></a></li>';
 		}
 		data+='</ul>';
-		console.log(data);
+		//console.log(data);
 		$("#resulttable").html(data);
     	//$("#pagelabel").html(datastring.find('span.step-links').html());
 		$("#reslist").listview({
