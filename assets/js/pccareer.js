@@ -177,9 +177,11 @@ updateSearch = function(urlstring,pagenumber) {
     type: 'GET',
     success: function(res) {
        // var headline = $(res.responseText).find('a.tsh').text();
-	   
-	   datastring = $(res.responseText).find('div#main');
-        //console.log(res.responseText);
+	   //console.log("Ajax success");
+	   //console.log(res);
+
+	   datastring = $(res).find('div#main');
+        //console.log(datastring);
 		//console.log(datastring.find('span.step-links'));
 		//dispaly total results  / pages strings
 		$("#note").text(datastring.find('p.note').text());
@@ -206,7 +208,7 @@ updateSearch = function(urlstring,pagenumber) {
 				return {id: ++i,
 						 postdate: $td.eq(0).text().trim(),
 						 deadline: $td.eq(1).text().trim(),
-						 link: "http://www.peacecorps.gov/"+$td.eq(2).html().substring(10, $td.eq(2).html().indexOf('>')),          
+						 link: "http://www.peacecorps.gov/"+$td.eq(2).html().trim().substring(10, $td.eq(2).html().trim().indexOf(">")-1),          
 						 jobtitle:$td.eq(2).find('a').text(),
 						 organization:$td.eq(3).text().trim(),
 						 city:$td.eq(4).text().trim(),
@@ -214,7 +216,7 @@ updateSearch = function(urlstring,pagenumber) {
 						 country:$td.eq(6).text().trim()
 				}
 		}).get();
-		
+		//console.log(dataarray);
 		var data='<ul data-role="listview"  data-autodividers="true" data-filter="false" id="reslist" >';
 		var length = dataarray.length;
 		var locationtext;
@@ -260,7 +262,10 @@ changePage = function(joburl) {
     url: joburl,
     type: 'GET',
     success: function(res) {
-	 datastring = $(res.responseText).find('div#main');
+		console.log("Ajax success");
+		//console.log(res);
+	 datastring = $(res).find('div#main');
+	 console.log(datastring);
 	$("#jobtext").html(datastring);
 	$("#jobtext a").bind("click", function(e){loadURL(this.getAttribute('href')); /*test = this;*/e.preventDefault(); return false;});
 	$("#jobcontainer").show();
